@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#8ed8ee" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23f25849'/%3E%3Ctext x='32' y='45' font-size='42' text-anchor='middle' fill='%23ffd55e'%3E✦%3C/text%3E%3C/svg%3E" />
+  <title>Turbo Toad — 60 Second Time Trial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game">
+    <canvas id="scene" aria-label="3D kart racing game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Turbo Toad home"><span class="brand-mark">✦</span><span>TURBO<br><b>TOAD</b></span></a>
+      <div class="event-tag"><span class="live-dot"></span> TIME TRIAL <i> / </i> 01 TRACK</div>
+      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">♪ <span>SOUND ON</span></button>
+    </header>
+    <section class="race-hud" id="raceHud" aria-live="polite">
+      <div class="timer-card"><span class="hud-label">TIME LEFT</span><strong id="timeLeft">60<span>.0</span></strong><div class="timer-track"><i id="timerBar"></i></div></div>
+      <div class="lap-card"><span class="hud-label">LAP</span><strong><span id="lapNumber">1</span><small> / ∞</small></strong></div>
+      <div class="speed-card"><span class="hud-label">SPEED</span><strong id="speedValue">000 <small>KM/H</small></strong><div class="speed-meter"><i id="speedBar"></i></div></div>
+    </section>
+    <div class="track-label"><span class="pin">⌖</span><span>PEACHY PLAINS</span><small>SPRING CIRCUIT</small></div>
+    <div class="place-label"><span class="place-icon">◈</span> <b id="placeName">START / FINISH</b></div>
+    <div class="minimap" aria-label="Track map"><div class="map-title">CIRCUIT <span>01</span></div><svg viewBox="0 0 170 110" role="img"><path class="map-road" d="M34 79 C13 69 18 36 41 29 C56 24 74 31 89 23 C111 11 143 21 147 42 C152 62 134 76 116 76 C98 76 89 92 69 94 C54 96 44 87 34 79Z"/><path class="map-center" d="M34 79 C13 69 18 36 41 29 C56 24 74 31 89 23 C111 11 143 21 147 42 C152 62 134 76 116 76 C98 76 89 92 69 94 C54 96 44 87 34 79Z"/><circle id="mapDot" cx="34" cy="79" r="4"/></svg></div>
+    <div class="controls-hint" id="controlsHint"><span>WASD</span> DRIVE <i>·</i> <span>SPACE</span> DRIFT <i>·</i> <span>R</span> RESET</div>
+    <div class="countdown" id="countdown" hidden>3</div>
+    <div class="overlay" id="startOverlay">
+      <div class="overlay-card">
+        <div class="eyebrow"><span></span> GRAND PRIX TIME ATTACK <span></span></div>
+        <h1>ONE MINUTE.<br><em>ONE MORE LAP.</em></h1>
+        <p>Race the clock on the sunny Peachy Plains circuit.<br>How many laps can you bank before time runs out?</p>
+        <div class="best-row"><span>YOUR BEST</span><b id="bestScore">— LAPS</b></div>
+        <button class="start-button" id="startButton">START YOUR ENGINE <span>↗</span></button>
+        <div class="key-guide"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> steer &amp; accelerate</span><span><kbd>SPACE</kbd> drift boost</span></div>
+      </div>
+      <div class="overlay-note">A LITTLE DAYLIGHT. A LOT OF SPEED.</div>
+    </div>
+    <div class="finish-overlay" id="finishOverlay" hidden>
+      <div class="overlay-card finish-card"><div class="eyebrow"><span></span> CHECKERED FLAG <span></span></div><h2>TIME'S UP!</h2><p>What a run. Want one more shot at the circuit?</p><div class="finish-stats"><div><small>LAPS</small><b id="finalLaps">0</b></div><div><small>BEST LAP</small><b id="finalBest">—:—</b></div><div><small>TOP SPEED</small><b id="finalSpeed">0</b></div></div><button class="start-button" id="againButton">RACE AGAIN <span>↗</span></button></div>
+    </div>
+    <div class="toast" id="toast">DRIFT BOOST! <span>✦</span></div>
+    <div class="mobile-controls" id="mobileControls"><button data-key="left" aria-label="Steer left">‹</button><button data-key="right" aria-label="Steer right">›</button><div><button data-key="drift" aria-label="Drift">DRIFT</button><button data-key="gas" aria-label="Accelerate">▲</button></div></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
